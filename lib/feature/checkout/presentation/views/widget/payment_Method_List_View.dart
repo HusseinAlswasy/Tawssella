@@ -16,7 +16,7 @@ class _PaymentMethodListViewState extends State<PaymentMethodListView> {
     'assets/images/paypal.svg',
     'assets/images/pay.svg',
   ];
-  int ActiveIndex=0;
+  int ActiveIndex = 0;
 
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,17 +26,17 @@ class _PaymentMethodListViewState extends State<PaymentMethodListView> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8,),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8,
+            ),
             child: GestureDetector(
-              onTap:(){
+              onTap: () {
                 ActiveIndex = index;
-                setState(() {
-
-                });
+                setState(() {});
               },
               child: ContCardPayment(
                 image: paymentMethodItem[index],
-                isActive: ActiveIndex==index,
+                isActive: ActiveIndex == index,
               ),
             ),
           );

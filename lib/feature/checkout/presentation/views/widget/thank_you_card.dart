@@ -85,32 +85,42 @@ class ThankYouCard extends StatelessWidget {
               height: 20,
             ),
             const InfoMasterCardthank(),
-           const Spacer(),
-           Padding(
-             padding: const EdgeInsets.only(bottom: 50),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset('assets/images/SVGRepo_iconCarrier.svg',height: 50,),
-
+                  SvgPicture.asset(
+                    'assets/images/SVGRepo_iconCarrier.svg',
+                    height: 50,
+                  ),
                   Container(
                     width: 113,
                     height: 58,
                     decoration: ShapeDecoration(
                       shape: RoundedRectangleBorder(
-                         side: const BorderSide(
+                        side: const BorderSide(
                           width: 1.5,
                           color: Colors.green,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-
-                    child: const Center(child: Text("PAID",style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,)),
+                    child: const Center(
+                        child: Text(
+                      "PAID",
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    )),
                   ),
                 ],
               ),
-           ),
+            ),
           ],
         ),
       ),

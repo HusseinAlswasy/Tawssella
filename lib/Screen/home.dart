@@ -62,8 +62,8 @@ class _MainScreenState extends State<MainScreen> {
 
       setState(() {
         if (cartData != null) {
-          cart = List<Map<String, String>>.from(
-              jsonDecode(cartData).map((item) => Map<String, String>.from(item)));
+          cart = List<Map<String, String>>.from(jsonDecode(cartData)
+              .map((item) => Map<String, String>.from(item)));
         }
         if (favoritesData != null) {
           favorites = List<Map<String, String>>.from(jsonDecode(favoritesData)
@@ -228,7 +228,7 @@ class ProductsScreen extends StatelessWidget {
       'name': 'سماعات AirPods Pro',
       'price': '999 ريال',
       'image':
-      'https://m.media-amazon.com/images/I/61Amk1yTq7L.__AC_SX300_SY300_QL70_ML2_.jpg',
+          'https://m.media-amazon.com/images/I/61Amk1yTq7L.__AC_SX300_SY300_QL70_ML2_.jpg',
     },
     {
       'name': 'تيشيرت Adidas Originals',
@@ -239,19 +239,19 @@ class ProductsScreen extends StatelessWidget {
       'name': 'حذاء Nike Air Max',
       'price': '499 ريال',
       'image':
-      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=150&h=150',
+          'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=150&h=150',
     },
     {
       'name': 'ساعة Apple Watch Series 9',
       'price': '1599 ريال',
       'image':
-      'https://m.media-amazon.com/images/I/81W0yyu1VnL.__AC_SX300_SY300_QL70_ML2_.jpg',
+          'https://m.media-amazon.com/images/I/81W0yyu1VnL.__AC_SX300_SY300_QL70_ML2_.jpg',
     },
     {
       'name': 'جوال iPhone 14 Pro',
       'price': '4299 ريال',
       'image':
-      'https://m.media-amazon.com/images/I/617uZpxrl1L.__AC_SX300_SY300_QL70_ML2_.jpg',
+          'https://m.media-amazon.com/images/I/617uZpxrl1L.__AC_SX300_SY300_QL70_ML2_.jpg',
     },
     {
       'name': 'نظارة Ray-Ban Wayfarer',
@@ -282,8 +282,11 @@ class ProductsScreen extends StatelessWidget {
                           cart: cart,
                           onRemove: (index) {
                             Navigator.of(context).pop();
-                            (context.findAncestorStateOfType<_MainScreenState>())!.removeFromCart(index);
-                          },                        ),
+                            (context.findAncestorStateOfType<
+                                    _MainScreenState>())!
+                                .removeFromCart(index);
+                          },
+                        ),
                       ),
                     );
                   },
@@ -315,53 +318,53 @@ class ProductsScreen extends StatelessWidget {
           children: [
             ads.isEmpty
                 ? const SizedBox(
-              height: 200,
-              child: Center(child: Text('لا توجد إعلانات')),
-            )
+                    height: 200,
+                    child: Center(child: Text('لا توجد إعلانات')),
+                  )
                 : CarouselSlider(
-              options: CarouselOptions(
-                height: 180.0,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                viewportFraction: .95,
-              ),
-              items: ads.map((ad) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          imageUrl: ad,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          errorWidget: (context, url, error) =>
-                          const Icon(
-                            Icons.broken_image,
-                            size: 50,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
+                    options: CarouselOptions(
+                      height: 180.0,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: .95,
+                    ),
+                    items: ads.map((ad) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: CachedNetworkImage(
+                                imageUrl: ad,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(
+                                  Icons.broken_image,
+                                  size: 50,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
             const SizedBox(height: 16),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -433,7 +436,7 @@ class ProductsScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final product = products[index];
                 final isFavorite =
-                favorites.any((item) => item['name'] == product['name']);
+                    favorites.any((item) => item['name'] == product['name']);
                 return GestureDetector(
                   onTap: () async {
                     final result = await Navigator.push(
@@ -472,7 +475,7 @@ class ProductsScreen extends StatelessWidget {
                                     child: CircularProgressIndicator(),
                                   ),
                                   errorWidget: (context, url, error) =>
-                                  const Icon(
+                                      const Icon(
                                     Icons.broken_image,
                                     size: 50,
                                     color: Colors.grey,
@@ -488,7 +491,7 @@ class ProductsScreen extends StatelessWidget {
                                         ? Icons.favorite
                                         : Icons.favorite_border,
                                     color:
-                                    isFavorite ? Colors.red : Colors.grey,
+                                        isFavorite ? Colors.red : Colors.grey,
                                   ),
                                   onPressed: () => onAddToFavorites(product),
                                 ),

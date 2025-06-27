@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ContCardPayment extends StatelessWidget {
-  ContCardPayment({super.key,required this.image,this.isActive=false});
+  ContCardPayment({super.key, required this.image, this.isActive = false});
 
   @override
   String image;
@@ -17,7 +16,7 @@ class ContCardPayment extends StatelessWidget {
         shape: RoundedRectangleBorder(
           side: BorderSide(
             width: 1.50,
-            color: isActive ? Colors.green:Colors.grey,
+            color: isActive ? Colors.green : Colors.grey,
           ),
           borderRadius: BorderRadius.circular(15),
         ),

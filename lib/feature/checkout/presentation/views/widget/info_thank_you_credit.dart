@@ -18,11 +18,14 @@ class InfoMasterCardthank extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 22,right: 22,top: 16,bottom: 16),
+        padding:
+            const EdgeInsets.only(left: 22, right: 22, top: 16, bottom: 16),
         child: Row(
           children: [
             SvgPicture.asset('assets/images/logo.svg'),
-            SizedBox(width: 23,),
+            SizedBox(
+              width: 23,
+            ),
             Column(
               children: [
                 Text("Credit Card"),

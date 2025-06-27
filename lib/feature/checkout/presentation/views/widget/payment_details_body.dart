@@ -49,14 +49,14 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                   //   setState(() {
                   //   });
                   // }
-  showModalBottomSheet(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  builder: (context) {
-                    return const PaymentBottomSheet();
-                  });
+                  showModalBottomSheet(
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      builder: (context) {
+                        return const PaymentBottomSheet();
+                      });
                 },
               ),
             ),
@@ -66,6 +66,7 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
     );
   }
 }
+
 class PaymentBottomSheet extends StatelessWidget {
   const PaymentBottomSheet({super.key});
 
@@ -76,9 +77,13 @@ class PaymentBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 16,),
+          const SizedBox(
+            height: 16,
+          ),
           PaymentMethodListView(),
-          const SizedBox(height: 32,),
+          const SizedBox(
+            height: 32,
+          ),
           CartButton(text: 'Continue'),
         ],
       ),
