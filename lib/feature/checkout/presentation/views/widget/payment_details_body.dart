@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment/Screen/payment/thankYou.dart';
+import 'package:payment/feature/checkout/data/repos/checkout_repo.dart';
+import 'package:payment/feature/checkout/data/repos/checkout_repo_implementation.dart';
+import 'package:payment/feature/checkout/presentation/manger/cubits/payment/cubit/payment_cubit_cubit.dart';
 import 'package:payment/feature/checkout/presentation/views/widget/cart_button.dart';
 import 'package:payment/feature/checkout/presentation/views/widget/payment_Method_List_View.dart';
+import 'package:payment/feature/checkout/presentation/views/widget/payment_bottom_sheet.dart';
 import 'custom_credit_card.dart';
 
 class PaymentDetailsBody extends StatefulWidget {
@@ -55,7 +60,10 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                         borderRadius: BorderRadius.circular(16),
                       ),
                       builder: (context) {
-                        return const PaymentBottomSheet();
+                        return BlocProvider(
+                          create: (context) => PaymentCubitCubit((CeckoutRepoImpl())),
+                          child: const PaymentBottomSheet(),
+                        );
                       });
                 },
               ),
@@ -63,30 +71,6 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class PaymentBottomSheet extends StatelessWidget {
-  const PaymentBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          PaymentMethodListView(),
-          const SizedBox(
-            height: 32,
-          ),
-          CartButton(text: 'Continue'),
-        ],
-      ),
     );
   }
 }

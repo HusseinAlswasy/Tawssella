@@ -4,7 +4,7 @@ import 'package:payment/core/utlis/stripe_services.dart';
 import 'package:payment/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:payment/feature/checkout/data/repos/checkout_repo.dart';
 
-class CeckoutRpoImpl extends CheckoutRepo {
+class CeckoutRepoImpl extends CheckoutRepo {
   final StripeServices stripeServices = StripeServices();
   @override
   Future<Either<Failuer, void>> makePayment(
