@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:payment/core/styels.dart';
 
 class CartButton extends StatelessWidget {
-  CartButton({super.key, this.onTap, required this.text, this.isLoading=false});
+  CartButton(
+      {super.key, this.onTap, required this.text, this.isLoading = false});
   void Function()? onTap;
   final String text;
   final bool isLoading;
@@ -17,13 +18,15 @@ class CartButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           color: Colors.green,
         ),
-        child:isLoading ?const Center(child: CircularProgressIndicator()): Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Styels.style18,
-          ),
-        ),
+        child: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Center(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: Styels.style18,
+                ),
+              ),
       ),
     );
   }

@@ -61,7 +61,8 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                       ),
                       builder: (context) {
                         return BlocProvider(
-                          create: (context) => PaymentCubitCubit((CeckoutRepoImpl())),
+                          create: (context) =>
+                              PaymentCubitCubit((CeckoutRepoImpl())),
                           child: const PaymentBottomSheet(),
                         );
                       });

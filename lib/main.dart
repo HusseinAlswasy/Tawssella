@@ -9,4 +9,10 @@ void main() {
     const HomeStore(),
   );
 }
- 
+
+
+// for save cards for users
+
+//1 - payment intent(amount,currency,customerId)
+//2 - first create account and create customer object id
+//3 - ephemeral key(stripversion, cutomerid)

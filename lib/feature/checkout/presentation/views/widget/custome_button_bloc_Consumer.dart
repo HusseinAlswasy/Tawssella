@@ -31,11 +31,9 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CartButton(
-          onTap: () {
-            PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(amount: '100', currency: 'USD');
-            BlocProvider.of<PaymentCubitCubit>(context)
-                .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+          onTap: (){
+            PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(amount: '100', currency: 'USD',customerId: 'cus_Si8zo4eXLDSxH7');
+            BlocProvider.of<PaymentCubitCubit>(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
           },
           isLoading: state is PaymentCubLoading ? true : false,
           text: 'Continue',

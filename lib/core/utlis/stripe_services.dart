@@ -21,20 +21,21 @@ class StripeServices {
   }
 
   Future initPaymentSheet({required String paymentIntentClientSecret}) async {
-   await Stripe.instance.initPaymentSheet(
+    await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
             paymentIntentClientSecret: paymentIntentClientSecret,
             merchantDisplayName: 'HusseinAlswasy'));
   }
 
-  Future displayPaymentsheet()async{
-   await Stripe.instance.presentPaymentSheet();
+  Future displayPaymentsheet() async {
+    await Stripe.instance.presentPaymentSheet();
   }
 
-  Future makePayment({required PaymentIntentInputModel paymentIntentInputModel})async{
-      var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
-      await initPaymentSheet(paymentIntentClientSecret: paymentIntentModel.clientSecret!);
-      await displayPaymentsheet();
+  Future makePayment(
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
+    var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
+    await initPaymentSheet(
+        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+    await displayPaymentsheet();
   }
-
 }

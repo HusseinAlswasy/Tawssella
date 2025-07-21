@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -25,11 +24,10 @@ class PaymentCubitCubit extends Cubit<PaymentCubitState> {
       ),
     );
   }
+
   @override
   void onChange(Change<PaymentCubitState> change) {
     log(change.toString());
     super.onChange(change);
   }
 }
-
-
