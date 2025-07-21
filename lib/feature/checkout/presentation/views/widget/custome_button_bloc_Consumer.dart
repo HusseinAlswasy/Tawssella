@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:payment/Screen/payment/thankYou.dart';
 import 'package:payment/feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:payment/feature/checkout/presentation/manger/cubits/payment/cubit/payment_cubit_cubit.dart';
 import 'package:payment/feature/checkout/presentation/views/widget/cart_button.dart';
+import 'package:payment/feature/checkout/presentation/views/widget/thank_you_view_body.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -18,21 +18,24 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) {
-                return const Thankyou();
+                return const ThankyouViewBody();
               },
             ),
           );
         }
         if (state is PaymentCubitFailuer) {
+          Navigator.pop(context);
           SnackBar snackBar = SnackBar(content: Text(state.errorMesssage));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
       builder: (context, state) {
         return CartButton(
-          onTap: (){
-            PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(amount: '1000', currency: 'USD');
-            BlocProvider.of<PaymentCubitCubit>(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
+          onTap: () {
+            PaymentIntentInputModel paymentIntentInputModel =
+                PaymentIntentInputModel(amount: '100', currency: 'USD');
+            BlocProvider.of<PaymentCubitCubit>(context)
+                .makePayment(paymentIntentInputModel: paymentIntentInputModel);
           },
           isLoading: state is PaymentCubLoading ? true : false,
           text: 'Continue',
