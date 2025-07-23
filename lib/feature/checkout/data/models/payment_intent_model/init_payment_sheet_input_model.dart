@@ -3,7 +3,8 @@ class InitPaymentSheetInputModel {
   final String customerId;
   final String ephemeralKeySecret;
 
-  InitPaymentSheetInputModel({required this.clientSecret, required this.customerId, required this.ephemeralKeySecret});
-
-  
+  InitPaymentSheetInputModel(
+      {required this.clientSecret,
+      required this.customerId,
+      required this.ephemeralKeySecret});
 }

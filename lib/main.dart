@@ -10,7 +10,6 @@ void main() {
   );
 }
 
-
 // for save cards for users
 
 //1 - payment intent(amount,currency,customerId)
