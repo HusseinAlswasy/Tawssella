@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment/core/errors/failuers.dart';
 import 'package:payment/core/utlis/stripe_services.dart';
 import 'package:payment/feature/checkout/data/models/payment_intent_input_model.dart';
@@ -13,7 +14,10 @@ class CeckoutRepoImpl extends CheckoutRepo {
       await stripeServices.makePayment(
           paymentIntentInputModel: paymentIntentInputModel);
       return right(null);
-    } on Exception catch (e) {
+    } on StripeException catch(e){
+      return left(ServerFailuer(errorMesssage: e.error.message?? 'OOPs There Was than Error'));
+    }
+    catch (e) {
       return left(ServerFailuer(errorMesssage: e.toString()));
     }
   }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:payment/Screen/payment/thankYou.dart';
-import 'package:payment/feature/checkout/data/repos/checkout_repo.dart';
 import 'package:payment/feature/checkout/data/repos/checkout_repo_implementation.dart';
 import 'package:payment/feature/checkout/presentation/manger/cubits/payment/cubit/payment_cubit_cubit.dart';
 import 'package:payment/feature/checkout/presentation/views/widget/cart_button.dart';
-import 'package:payment/feature/checkout/presentation/views/widget/payment_Method_List_View.dart';
 import 'package:payment/feature/checkout/presentation/views/widget/payment_bottom_sheet.dart';
 import 'custom_credit_card.dart';
 
@@ -24,9 +21,9 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
-          child: PaymentMethodListView(),
-        ),
+        // SliverToBoxAdapter(
+        //   child: PaymentMethodListView(),
+        // ),
         SliverToBoxAdapter(
           child: CustomCreditCard(
             formKey: formKey,
