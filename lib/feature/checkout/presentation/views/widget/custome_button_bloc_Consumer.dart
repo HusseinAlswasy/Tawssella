@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:payment/Screen/payment/my_cart_view.dart';
 import 'package:payment/Screen/payment/thankYou.dart';
 import 'package:payment/core/utlis/api_keys.dart';
 import 'package:payment/feature/checkout/data/models/amount_model/amount_model.dart';
@@ -97,8 +98,18 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           });
         },
         onError: (error) {
-          log("onError: $error");
-          Navigator.pop(context);
+          SnackBar snackBar = SnackBar(content: Text(error.toString()));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (context) {
+                return MyCartView();
+              }), (route) {
+                if (route.settings.name == '/') {
+                  return true;
+                } else {
+                  return false;
+                }
+              });
         },
         onCancel: () {
           print('cancelled:');
